@@ -1,0 +1,28 @@
+[2025-01-31T21:02:10.100+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-01-31T21:02:10.158+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_processing.nds-load scheduled__2025-01-31T21:00:00+00:00 [queued]>
+[2025-01-31T21:02:10.198+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_processing.nds-load scheduled__2025-01-31T21:00:00+00:00 [queued]>
+[2025-01-31T21:02:10.199+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2025-01-31T21:02:10.289+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): nds-load> on 2025-01-31 21:00:00+00:00
+[2025-01-31T21:02:10.325+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=2335) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-01-31T21:02:10.328+0000] {standard_task_runner.py:72} INFO - Started process 2347 to run task
+[2025-01-31T21:02:10.328+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'etl_processing', 'nds-load', 'scheduled__2025-01-31T21:00:00+00:00', '--job-id', '584', '--raw', '--subdir', 'DAGS_FOLDER/DAG_etl.py', '--cfg-path', '/tmp/tmp2di335lq']
+[2025-01-31T21:02:10.342+0000] {standard_task_runner.py:105} INFO - Job 584: Subtask nds-load
+[2025-01-31T21:02:10.532+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_processing.nds-load scheduled__2025-01-31T21:00:00+00:00 [running]> on host a664bcf281bf
+[2025-01-31T21:02:11.317+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_processing' AIRFLOW_CTX_TASK_ID='nds-load' AIRFLOW_CTX_EXECUTION_DATE='2025-01-31T21:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-31T21:00:00+00:00'
+[2025-01-31T21:02:11.320+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-01-31T21:02:11.408+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T21:02:11.492+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T21:02:11.636+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T21:02:11.800+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T21:02:11.929+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T21:02:12.076+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T21:02:12.218+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T21:02:12.372+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T21:02:12.549+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T21:02:12.791+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-01-31T21:02:12.849+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-01-31T21:02:12.850+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_processing, task_id=nds-load, run_id=scheduled__2025-01-31T21:00:00+00:00, execution_date=20250131T210000, start_date=20250131T210210, end_date=20250131T210212
+[2025-01-31T21:02:12.957+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-01-31T21:02:12.991+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

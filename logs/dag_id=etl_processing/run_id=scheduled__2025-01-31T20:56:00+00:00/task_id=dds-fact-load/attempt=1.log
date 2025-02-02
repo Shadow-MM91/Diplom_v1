@@ -1,0 +1,38 @@
+[2025-01-31T20:58:33.503+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-01-31T20:58:33.558+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_processing.dds-fact-load scheduled__2025-01-31T20:56:00+00:00 [queued]>
+[2025-01-31T20:58:33.584+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_processing.dds-fact-load scheduled__2025-01-31T20:56:00+00:00 [queued]>
+[2025-01-31T20:58:33.584+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2025-01-31T20:58:33.619+0000] {taskinstance.py:2889} INFO - Executing <Task(SQLExecuteQueryOperator): dds-fact-load> on 2025-01-31 20:56:00+00:00
+[2025-01-31T20:58:33.636+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=2236) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-01-31T20:58:33.641+0000] {standard_task_runner.py:72} INFO - Started process 2238 to run task
+[2025-01-31T20:58:33.644+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'etl_processing', 'dds-fact-load', 'scheduled__2025-01-31T20:56:00+00:00', '--job-id', '567', '--raw', '--subdir', 'DAGS_FOLDER/DAG_etl.py', '--cfg-path', '/tmp/tmp8nxbv306']
+[2025-01-31T20:58:33.649+0000] {standard_task_runner.py:105} INFO - Job 567: Subtask dds-fact-load
+[2025-01-31T20:58:33.774+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_processing.dds-fact-load scheduled__2025-01-31T20:56:00+00:00 [running]> on host a664bcf281bf
+[2025-01-31T20:58:34.482+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_processing' AIRFLOW_CTX_TASK_ID='dds-fact-load' AIRFLOW_CTX_EXECUTION_DATE='2025-01-31T20:56:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-31T20:56:00+00:00'
+[2025-01-31T20:58:34.486+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-01-31T20:58:34.526+0000] {sql.py:278} INFO - Executing: 
+    insert into dds.fact_sales_branch (invoice_id, branch, city, customer_type, gender, product_line, unit_price, quantity, "tax_5%",
+        total, date, time, payment, cogs, gross_margin_percentage, gross_income, rating)
+        (select distinct 
+            invoice_id, branch, city, customer_type, gender, 
+            product_line, unit_price, quantity, "tax_5%", total, date::date,
+            time, payment, cogs, gross_margin_percentage, gross_income, rating 
+        from nds.fact_sales_branch where invoice_id not in (select distinct invoice_id FROM dds.fact_sales_branch));
+[2025-01-31T20:58:34.550+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T20:58:34.570+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T20:58:34.581+0000] {sql.py:544} INFO - Running statement: 
+    insert into dds.fact_sales_branch (invoice_id, branch, city, customer_type, gender, product_line, unit_price, quantity, "tax_5%",
+        total, date, time, payment, cogs, gross_margin_percentage, gross_income, rating)
+        (select distinct 
+            invoice_id, branch, city, customer_type, gender, 
+            product_line, unit_price, quantity, "tax_5%", total, date::date,
+            time, payment, cogs, gross_margin_percentage, gross_income, rating 
+        from nds.fact_sales_branch where invoice_id not in (select distinct invoice_id FROM dds.fact_sales_branch));, parameters: None
+[2025-01-31T20:58:34.599+0000] {sql.py:553} INFO - Rows affected: 2
+[2025-01-31T20:58:34.638+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-01-31T20:58:34.639+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_processing, task_id=dds-fact-load, run_id=scheduled__2025-01-31T20:56:00+00:00, execution_date=20250131T205600, start_date=20250131T205833, end_date=20250131T205834
+[2025-01-31T20:58:34.712+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-01-31T20:58:34.762+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-01-31T20:58:34.765+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

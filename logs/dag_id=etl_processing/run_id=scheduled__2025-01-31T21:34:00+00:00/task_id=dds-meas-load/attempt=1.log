@@ -1,0 +1,58 @@
+[2025-01-31T21:36:20.743+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-01-31T21:36:20.794+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_processing.dds-meas-load scheduled__2025-01-31T21:34:00+00:00 [queued]>
+[2025-01-31T21:36:20.819+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_processing.dds-meas-load scheduled__2025-01-31T21:34:00+00:00 [queued]>
+[2025-01-31T21:36:20.819+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2025-01-31T21:36:20.862+0000] {taskinstance.py:2889} INFO - Executing <Task(SQLExecuteQueryOperator): dds-meas-load> on 2025-01-31 21:34:00+00:00
+[2025-01-31T21:36:20.879+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=2945) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-01-31T21:36:20.882+0000] {standard_task_runner.py:72} INFO - Started process 2954 to run task
+[2025-01-31T21:36:20.885+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'etl_processing', 'dds-meas-load', 'scheduled__2025-01-31T21:34:00+00:00', '--job-id', '646', '--raw', '--subdir', 'DAGS_FOLDER/DAG_etl.py', '--cfg-path', '/tmp/tmps1ejyud3']
+[2025-01-31T21:36:20.891+0000] {standard_task_runner.py:105} INFO - Job 646: Subtask dds-meas-load
+[2025-01-31T21:36:21.036+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_processing.dds-meas-load scheduled__2025-01-31T21:34:00+00:00 [running]> on host a664bcf281bf
+[2025-01-31T21:36:21.736+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_processing' AIRFLOW_CTX_TASK_ID='dds-meas-load' AIRFLOW_CTX_EXECUTION_DATE='2025-01-31T21:34:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-31T21:34:00+00:00'
+[2025-01-31T21:36:21.739+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-01-31T21:36:21.782+0000] {sql.py:278} INFO - Executing: 
+    insert into dds.branch (branch)
+        (select branch from nds.branch where branch not in (select branch from dds.branch));
+
+    insert into dds.city (city)
+        (select city from nds.city where city not in (select city from dds.city));
+
+    insert into dds.customer_type (customer_type)
+        (select customer_type from nds.customer_type where customer_type not in (select customer_type from dds.customer_type));
+
+    insert into dds.gender (gender)
+        (select gender from nds.gender where gender not in (select gender from dds.gender));
+
+    insert into dds.product_line (product_line)
+        (select product_line from nds.product_line where product_line not in (select product_line from dds.product_line));
+
+    insert into dds.payment (payment)
+        (select payment from nds.payment where payment not in (select payment from dds.payment));
+[2025-01-31T21:36:21.810+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T21:36:21.835+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T21:36:21.847+0000] {sql.py:544} INFO - Running statement: 
+    insert into dds.branch (branch)
+        (select branch from nds.branch where branch not in (select branch from dds.branch));
+
+    insert into dds.city (city)
+        (select city from nds.city where city not in (select city from dds.city));
+
+    insert into dds.customer_type (customer_type)
+        (select customer_type from nds.customer_type where customer_type not in (select customer_type from dds.customer_type));
+
+    insert into dds.gender (gender)
+        (select gender from nds.gender where gender not in (select gender from dds.gender));
+
+    insert into dds.product_line (product_line)
+        (select product_line from nds.product_line where product_line not in (select product_line from dds.product_line));
+
+    insert into dds.payment (payment)
+        (select payment from nds.payment where payment not in (select payment from dds.payment));, parameters: None
+[2025-01-31T21:36:21.858+0000] {sql.py:553} INFO - Rows affected: 0
+[2025-01-31T21:36:21.903+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-01-31T21:36:21.904+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_processing, task_id=dds-meas-load, run_id=scheduled__2025-01-31T21:34:00+00:00, execution_date=20250131T213400, start_date=20250131T213620, end_date=20250131T213621
+[2025-01-31T21:36:22.006+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-01-31T21:36:22.094+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-01-31T21:36:22.123+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

@@ -1,0 +1,76 @@
+[2025-01-29T22:14:03.853+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-01-29T22:14:03.966+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_processing.test_table_create scheduled__2025-01-29T22:12:00+00:00 [queued]>
+[2025-01-29T22:14:04.017+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_processing.test_table_create scheduled__2025-01-29T22:12:00+00:00 [queued]>
+[2025-01-29T22:14:04.018+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2025-01-29T22:14:04.086+0000] {taskinstance.py:2889} INFO - Executing <Task(SQLExecuteQueryOperator): test_table_create> on 2025-01-29 22:12:00+00:00
+[2025-01-29T22:14:04.114+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=2242) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-01-29T22:14:04.120+0000] {standard_task_runner.py:72} INFO - Started process 2248 to run task
+[2025-01-29T22:14:04.123+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'etl_processing', 'test_table_create', 'scheduled__2025-01-29T22:12:00+00:00', '--job-id', '531', '--raw', '--subdir', 'DAGS_FOLDER/DAG_etl.py', '--cfg-path', '/tmp/tmp6c2crexc']
+[2025-01-29T22:14:04.129+0000] {standard_task_runner.py:105} INFO - Job 531: Subtask test_table_create
+[2025-01-29T22:14:04.409+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_processing.test_table_create scheduled__2025-01-29T22:12:00+00:00 [running]> on host a664bcf281bf
+[2025-01-29T22:14:05.152+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_processing' AIRFLOW_CTX_TASK_ID='test_table_create' AIRFLOW_CTX_EXECUTION_DATE='2025-01-29T22:12:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-29T22:12:00+00:00'
+[2025-01-29T22:14:05.154+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-01-29T22:14:05.194+0000] {sql.py:278} INFO - Executing: 
+        create schema if not exists stg;
+
+        create table if not exists stg.test_data_gener(
+        	id serial primary key,
+		    invoice_id varchar(15),
+        	branch varchar(2),
+        	city varchar(100),
+        	customer_type varchar(10),
+        	gender varchar(10),
+        	product_line varchar(150),
+        	unit_price varchar(10),
+        	quantity varchar(3),
+        	"tax_5%" varchar(10),
+        	total varchar(15),
+        	date varchar(15),
+        	time varchar(10),
+        	payment varchar(150),
+        	cogs varchar(15),
+        	gross_margin_percentage varchar(15),
+        	gross_income varchar(10),
+        	rating varchar(4)
+    		);
+		
+	    create table if not exists stg.temp_var(
+                last_value_id integer
+ 		);
+
+[2025-01-29T22:14:05.213+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-29T22:14:05.229+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-29T22:14:05.237+0000] {sql.py:544} INFO - Running statement: 
+        create schema if not exists stg;
+
+        create table if not exists stg.test_data_gener(
+        	id serial primary key,
+		    invoice_id varchar(15),
+        	branch varchar(2),
+        	city varchar(100),
+        	customer_type varchar(10),
+        	gender varchar(10),
+        	product_line varchar(150),
+        	unit_price varchar(10),
+        	quantity varchar(3),
+        	"tax_5%" varchar(10),
+        	total varchar(15),
+        	date varchar(15),
+        	time varchar(10),
+        	payment varchar(150),
+        	cogs varchar(15),
+        	gross_margin_percentage varchar(15),
+        	gross_income varchar(10),
+        	rating varchar(4)
+    		);
+		
+	    create table if not exists stg.temp_var(
+                last_value_id integer
+ 		);
+, parameters: None
+[2025-01-29T22:14:05.266+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-01-29T22:14:05.267+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_processing, task_id=test_table_create, run_id=scheduled__2025-01-29T22:12:00+00:00, execution_date=20250129T221200, start_date=20250129T221403, end_date=20250129T221405
+[2025-01-29T22:14:05.368+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-01-29T22:14:05.416+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

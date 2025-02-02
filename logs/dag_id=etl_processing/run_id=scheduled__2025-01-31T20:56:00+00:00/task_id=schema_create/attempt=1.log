@@ -1,0 +1,28 @@
+[2025-01-31T20:58:05.361+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-01-31T20:58:05.437+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_processing.schema_create scheduled__2025-01-31T20:56:00+00:00 [queued]>
+[2025-01-31T20:58:05.471+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_processing.schema_create scheduled__2025-01-31T20:56:00+00:00 [queued]>
+[2025-01-31T20:58:05.473+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2025-01-31T20:58:08.123+0000] {taskinstance.py:2889} INFO - Executing <Task(SQLExecuteQueryOperator): schema_create> on 2025-01-31 20:56:00+00:00
+[2025-01-31T20:58:08.152+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=2202) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-01-31T20:58:08.179+0000] {standard_task_runner.py:72} INFO - Started process 2216 to run task
+[2025-01-31T20:58:08.180+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'etl_processing', 'schema_create', 'scheduled__2025-01-31T20:56:00+00:00', '--job-id', '561', '--raw', '--subdir', 'DAGS_FOLDER/DAG_etl.py', '--cfg-path', '/tmp/tmp61e3lijz']
+[2025-01-31T20:58:08.191+0000] {standard_task_runner.py:105} INFO - Job 561: Subtask schema_create
+[2025-01-31T20:58:11.151+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_processing.schema_create scheduled__2025-01-31T20:56:00+00:00 [running]> on host a664bcf281bf
+[2025-01-31T20:58:12.352+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_processing' AIRFLOW_CTX_TASK_ID='schema_create' AIRFLOW_CTX_EXECUTION_DATE='2025-01-31T20:56:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-31T20:56:00+00:00'
+[2025-01-31T20:58:12.355+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-01-31T20:58:12.413+0000] {sql.py:278} INFO - Executing: 
+    create schema if not exists nds;
+    create schema if not exists dds;
+    create schema if not exists stg;
+[2025-01-31T20:58:12.451+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T20:58:12.479+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-31T20:58:12.492+0000] {sql.py:544} INFO - Running statement: 
+    create schema if not exists nds;
+    create schema if not exists dds;
+    create schema if not exists stg;, parameters: None
+[2025-01-31T20:58:12.560+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-01-31T20:58:12.561+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_processing, task_id=schema_create, run_id=scheduled__2025-01-31T20:56:00+00:00, execution_date=20250131T205600, start_date=20250131T205805, end_date=20250131T205812
+[2025-01-31T20:58:12.709+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-01-31T20:58:12.746+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

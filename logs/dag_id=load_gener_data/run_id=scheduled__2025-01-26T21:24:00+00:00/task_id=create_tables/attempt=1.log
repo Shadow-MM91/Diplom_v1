@@ -1,0 +1,77 @@
+[2025-01-26T21:25:46.983+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-01-26T21:25:47.025+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: load_gener_data.create_tables scheduled__2025-01-26T21:24:00+00:00 [queued]>
+[2025-01-26T21:25:47.043+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: load_gener_data.create_tables scheduled__2025-01-26T21:24:00+00:00 [queued]>
+[2025-01-26T21:25:47.043+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2025-01-26T21:25:47.081+0000] {taskinstance.py:2889} INFO - Executing <Task(SQLExecuteQueryOperator): create_tables> on 2025-01-26 21:24:00+00:00
+[2025-01-26T21:25:47.097+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=1009) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-01-26T21:25:47.100+0000] {standard_task_runner.py:72} INFO - Started process 1011 to run task
+[2025-01-26T21:25:47.101+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'load_gener_data', 'create_tables', 'scheduled__2025-01-26T21:24:00+00:00', '--job-id', '359', '--raw', '--subdir', 'DAGS_FOLDER/DAG_test_data.py', '--cfg-path', '/tmp/tmpozen0c2b']
+[2025-01-26T21:25:47.106+0000] {standard_task_runner.py:105} INFO - Job 359: Subtask create_tables
+[2025-01-26T21:25:47.262+0000] {task_command.py:467} INFO - Running <TaskInstance: load_gener_data.create_tables scheduled__2025-01-26T21:24:00+00:00 [running]> on host a664bcf281bf
+[2025-01-26T21:25:48.008+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='load_gener_data' AIRFLOW_CTX_TASK_ID='create_tables' AIRFLOW_CTX_EXECUTION_DATE='2025-01-26T21:24:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-01-26T21:24:00+00:00'
+[2025-01-26T21:25:48.010+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-01-26T21:25:48.054+0000] {sql.py:278} INFO - Executing: 
+        create schema if not exists stg;
+
+        create table if not exists stg.test_data_gener(
+        	id serial primary key,
+		    invoice_id varchar(15),
+        	branch varchar(2),
+        	city varchar(100),
+        	customer_type varchar(10),
+        	gender varchar(10),
+        	product_line varchar(150),
+        	unit_price varchar(10),
+        	quantity varchar(3),
+        	"tax_5%" varchar(10),
+        	total varchar(15),
+        	date varchar(15),
+        	time varchar(10),
+        	payment varchar(150),
+        	cogs varchar(15),
+        	gross_margin_percentage varchar(15),
+        	gross_income varchar(10),
+        	rating varchar(4)
+    		);
+		
+	    create table if not exists stg.temp_var(
+                last_value_id integer
+ 		);
+
+[2025-01-26T21:25:48.082+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-26T21:25:48.101+0000] {base.py:84} INFO - Retrieving connection 'DB_connect'
+[2025-01-26T21:25:48.112+0000] {sql.py:544} INFO - Running statement: 
+        create schema if not exists stg;
+
+        create table if not exists stg.test_data_gener(
+        	id serial primary key,
+		    invoice_id varchar(15),
+        	branch varchar(2),
+        	city varchar(100),
+        	customer_type varchar(10),
+        	gender varchar(10),
+        	product_line varchar(150),
+        	unit_price varchar(10),
+        	quantity varchar(3),
+        	"tax_5%" varchar(10),
+        	total varchar(15),
+        	date varchar(15),
+        	time varchar(10),
+        	payment varchar(150),
+        	cogs varchar(15),
+        	gross_margin_percentage varchar(15),
+        	gross_income varchar(10),
+        	rating varchar(4)
+    		);
+		
+	    create table if not exists stg.temp_var(
+                last_value_id integer
+ 		);
+, parameters: None
+[2025-01-26T21:25:48.142+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-01-26T21:25:48.143+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=load_gener_data, task_id=create_tables, run_id=scheduled__2025-01-26T21:24:00+00:00, execution_date=20250126T212400, start_date=20250126T212547, end_date=20250126T212548
+[2025-01-26T21:25:48.221+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-01-26T21:25:48.290+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-01-26T21:25:48.293+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
