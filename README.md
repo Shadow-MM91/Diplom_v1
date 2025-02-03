@@ -79,3 +79,7 @@ __Рейтинг:__ Оценка стратификации покупателе
 NDS диаграмма выглядит так: ![NDS](dags/data/screen/NDS.jpg)
 
 DDS диаграмма выглядит так: ![DDS](dags/data/screen/DDS.jpg)
+
+STG диаграмма выглядит так: ![DDS](dags/data/screen/STG.jpg)
+
+MART диаграмма выглядит так: ![DDS](dags/data/screen/MART.jpg)
