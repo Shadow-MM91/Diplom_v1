@@ -76,10 +76,18 @@ __Рейтинг:__ Оценка стратификации покупателе
 * В __STG__ слое будут сгенерированные данные, для которых применится ETL процесс и данные попадут в __DDS__ слой.
 * В __MART__ слое будут сформированы представления для дальнейшего формирования Dashboards.
 
-NDS диаграмма выглядит так: ![NDS](dags/data/screen/NDS.jpg)
+NDS диаграмма выглядит так: 
 
-DDS диаграмма выглядит так: ![DDS](dags/data/screen/DDS.jpg)
+![NDS](dags/data/screen/NDS.jpg)
 
-STG диаграмма выглядит так: ![DDS](dags/data/screen/STG.jpg)
+DDS диаграмма выглядит так: 
 
-MART диаграмма выглядит так: ![DDS](dags/data/screen/MART.jpg)
+![DDS](dags/data/screen/DDS.jpg)
+
+STG диаграмма выглядит так: 
+
+![DDS](dags/data/screen/STG.jpg)
+
+MART диаграмма выглядит так: 
+
+![DDS](dags/data/screen/MART.jpg)
