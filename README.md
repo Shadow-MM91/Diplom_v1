@@ -171,7 +171,7 @@ __Gafana__ так же как и __Airflow__+__PostgreSQL__ была интег�
 
 Создадим несколько дашбордов на основе `views`:
 
-![Connection](dags/data/screen/Dachboards.jpg)
+![Connection](dags/data/screen/Dashboards.jpg)
 
 
 
