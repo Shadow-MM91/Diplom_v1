@@ -149,7 +149,7 @@ MART диаграмма выглядит так:
 
 __Gafana__ так же как и __Airflow__+__PostgreSQL__ была интегрирована в `docker_compose.yaml` файл:
 ```
-grafana:
+  grafana:
     image: grafana/grafana-enterprise
     container_name: airflow-grafana
     environment:
@@ -165,7 +165,9 @@ grafana:
         - ./grafana/volume/provisioning:/grafana/provisioning
 ```
 
+Создаём подключение к нашей БД:
 
+![Connection](dags/data/screen/grafana_conection_postgres.jpg)
 
 
 
