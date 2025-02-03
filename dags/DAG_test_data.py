@@ -1,4 +1,5 @@
 from airflow.providers.postgres.hooks.postgres import PostgresHook
+from airflow.operators.empty import EmptyOperator
 from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator
 from airflow.operators.python import PythonOperator
 from airflow import DAG
@@ -8,6 +9,7 @@ from tasks.etl.test_data.test_data_gener import test_data_gener
 from tasks.etl.query_sql import create_test_tables
 
 default_args = {
+        
 }
 
 with DAG(
@@ -17,6 +19,9 @@ with DAG(
         default_args=default_args,
         catchup=False,
 ) as dag:
+
+    start = EmptyOperator(task_id='start')
+    end = EmptyOperator(task_id='end')
 
     create_task = SQLExecuteQueryOperator(
         task_id='create_tables',
@@ -30,4 +35,4 @@ with DAG(
         op_kwargs={"hook": PostgresHook(postgres_conn_id='DB_connect')},
     )
 
-create_task >> stg_load_task
+start >> create_task >> stg_load_task >> end
