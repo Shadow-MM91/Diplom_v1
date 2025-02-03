@@ -24,6 +24,7 @@ with DAG(
 ) as dag:
 
     start = EmptyOperator(task_id='start')
+    end = EmptyOperator(task_id='end')
 
     schema_create_task = SQLExecuteQueryOperator(
         task_id='schema_create',
@@ -61,4 +62,4 @@ with DAG(
         sql=update_dds_fact,
     )
 
-start >> [schema_create_task, test_table_create_task] >> nds_load_task >> dds_create_task >> dds_dim_load_task >> dds_fact_load_task
+start >> [schema_create_task, test_table_create_task] >> nds_load_task >> dds_create_task >> dds_dim_load_task >> dds_fact_load_task >> end
