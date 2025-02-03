@@ -10,7 +10,7 @@
 * Формирование ETL процесса
 * Формирование дашбордов
 
-## 1.Анализ данных
+## 1. Анализ данных
 __Продажи в Супермаркете (описание данных).__
 
 __Контекст:__ Число супермаркетов в большинстве густонаселенных городов растет, а конкуренция на рынке также высока. Набор данных представляет собой данные об исторических продажах компании-супермаркета, которые были зарегистрированы в 3 разных филиалах за 3 месяца. С этим набором данных легко применять методы прогнозного анализа данных.
@@ -148,7 +148,20 @@ MART диаграмма выглядит так:
 Для их отображения была выбрана система визуализации данных __Grafana__
 
 __Gafana__ так же как и __Airflow__+__PostgreSQL__ была интегрирована в `docker_compose.yaml` файл:
-
+`  grafana:
+    image: grafana/grafana-enterprise
+    container_name: airflow-grafana
+    environment:
+        GF_SECURITY_ADMIN_USER: admin
+        GF_SECURITY_ADMIN_PASSWORD: password
+        GF_PATHS_PROVISIONING: /grafana/provisioning
+    ports:
+        - 3000:3000
+    volumes:
+        - ./grafana/volume/data:/grafana
+        - ./grafana/volume/datasources:/grafana/datasources
+        - ./grafana/volume/dashboards:/grafana/dashboards
+        - ./grafana/volume/provisioning:/grafana/provisioning`
 
 
 
