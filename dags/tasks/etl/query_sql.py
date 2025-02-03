@@ -130,22 +130,34 @@ generate_tables_dds = '''
 
 update_dds_tables = '''
     insert into dds.branch (branch)
-        (select branch from nds.branch where branch not in (select branch from dds.branch));
+        (select branch 
+	 from nds.branch 
+         where branch not in (select branch from dds.branch));
 
     insert into dds.city (city)
-        (select city from nds.city where city not in (select city from dds.city));
+        (select city 
+	 from nds.city 
+  	 where city not in (select city from dds.city));
 
     insert into dds.customer_type (customer_type)
-        (select customer_type from nds.customer_type where customer_type not in (select customer_type from dds.customer_type));
+        (select customer_type 
+	 from nds.customer_type 
+  	 where customer_type not in (select customer_type from dds.customer_type));
 
     insert into dds.gender (gender)
-        (select gender from nds.gender where gender not in (select gender from dds.gender));
+        (select gender 
+	 from nds.gender 
+  	 where gender not in (select gender from dds.gender));
 
     insert into dds.product_line (product_line)
-        (select product_line from nds.product_line where product_line not in (select product_line from dds.product_line));
+        (select product_line 
+	 from nds.product_line 
+  	 where product_line not in (select product_line from dds.product_line));
 
     insert into dds.payment (payment)
-        (select payment from nds.payment where payment not in (select payment from dds.payment));
+        (select payment 
+	 from nds.payment 
+  	 where payment not in (select payment from dds.payment));
 '''
 
 update_dds_fact = '''
@@ -155,5 +167,6 @@ update_dds_fact = '''
             invoice_id, branch, city, customer_type, gender, 
             product_line, unit_price, quantity, "tax_5%", total, date::date,
             time, payment, cogs, gross_margin_percentage, gross_income, rating 
-        from nds.fact_sales_branch where invoice_id not in (select distinct invoice_id FROM dds.fact_sales_branch));
+        from nds.fact_sales_branch 
+	where invoice_id not in (select distinct invoice_id FROM dds.fact_sales_branch));
 '''
