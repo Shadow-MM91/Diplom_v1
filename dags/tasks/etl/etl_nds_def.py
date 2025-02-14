@@ -139,7 +139,7 @@ def source_processing_2(hook):
         df_id = df_id["last_value_id"].tolist()  # Преобразование значенией в список
         df = postgresql_to_dataframe(hook, "SELECT * FROM stg.test_data_gener",column_names)  # Запрос к Базе данных на тестовые данные
         temp = df.index[df["id"] == df_id[0]].tolist()  # Выводим значение индекса строки отфильтрованного по значению из столбца 'id', преобразуем в список.
-        df = df.loc[temp[0] + 1:]  # Делаем новый срез DataSet от последней строки (не включая её) последнего обработанного среза до конца
+        df = df.loc[temp[0]:]  # Делаем новый срез DataSet от последней строки последнего обработанного среза до конца
         df_id = df.pop('id')  # Удаляем столбец 'id' из датасета df и одновременно формеруем список значений 'id'
         df_id = df_id.tail(1)  # Берём последнее значение списка
         df_id = df_id.rename('last_value_id')
